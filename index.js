@@ -13,6 +13,9 @@ express()
   .get('/', (req, res) =>{
     res.sendFile(path.join(__dirname, 'page.html'));
     })
+  .get('/last', (req, res) =>{
+    res.send("Última temperatura: ", String(lastTemp));
+  })
   .post('/temp', (req, res) => {
     console.log(req.body)
     var data = JSON.stringify(req.body)
