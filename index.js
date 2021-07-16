@@ -14,7 +14,7 @@ express()
     res.sendFile(path.join(__dirname, 'page.html'));
     })
   .get('/last', (req, res) =>{
-    res.send("Última temperatura: ", String(lastTemp));
+    res.send("Última temperatura: "+ String(lastTemp));
   })
   .post('/temp', (req, res) => {
     console.log(req.body)
