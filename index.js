@@ -25,6 +25,7 @@ express()
     var data = JSON.stringify(req.body)
     data = JSON.parse(data);
     var temp = parseFloat(data.temp);
+    lastTemp = data.temp;
     lastDate = data.date;
     res.send("Dado armazenado:" + String(temp))
   })
