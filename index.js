@@ -3,7 +3,7 @@ const path = require('path');;
 const PORT = process.env.PORT || 5000
 
 var lastTemp = 0;
-var savedData = 0;
+var lastDate = "23-32-we";
 
 express()
   .use(express.json())
@@ -14,14 +14,18 @@ express()
     res.sendFile(path.join(__dirname, 'page.html'));
     })
   .get('/last', (req, res) =>{
-    res.send("Última temperatura: "+ String(lastTemp));
+    res.setHeader('Content-Type', 'text/html', 'charset=utf-8');
+    console.log(lastDate);
+    res.write("<p>Ultima temperatura: "+ String(lastTemp));
+    res.write("</p><span>Medida em <span>" + String(lastDate));
+    res.end();
   })
   .post('/temp', (req, res) => {
     console.log(req.body)
     var data = JSON.stringify(req.body)
     data = JSON.parse(data);
     var temp = parseFloat(data.temp);
-    lastTemp = temp;
+    lastDate = data.date;
     res.send("Dado armazenado:" + String(temp))
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
