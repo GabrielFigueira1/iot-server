@@ -8,9 +8,6 @@ const Temp = mongoose.model('Temp', sch.tempSchema);
 
 const PORT = process.env.PORT || 5000
 
-var lastTemp = 0;
-var lastDate = "23-32-we";
-
 express()
   .use(express.json())
   .use(express.static(path.join(__dirname, 'public')))
